@@ -100,3 +100,63 @@ h1 {
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     transition: background-color 0.3s ease, color 0.3s ease;
 }
+
+.divider {
+    margin: 40px 0;
+    border: 0;
+    border-top: 1px solid var(--number-bg);
+}
+
+.contact-form-container {
+    text-align: left;
+}
+
+.contact-form-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.5em;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--number-bg);
+    border-radius: 5px;
+    background-color: var(--container-bg);
+    color: var(--text-color);
+    font-family: inherit;
+    box-sizing: border-box;
+}
+
+.form-group textarea {
+    height: 100px;
+    resize: vertical;
+}
+
+#submit-btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    background-color: #2196F3;
+    color: white;
+    font-size: 1em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#submit-btn:hover {
+    background-color: #1976D2;
+}
