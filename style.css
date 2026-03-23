@@ -160,3 +160,7 @@ h1 {
 #submit-btn:hover {
     background-color: #1976D2;
 }
+
+#disqus_thread {
+    margin-top: 40px;
+}
