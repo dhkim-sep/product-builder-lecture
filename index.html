@@ -1,64 +1,87 @@
+
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Firebase 정상 동작 페이지</title>
-
-    <!-- Firebase SDK (CDN 방식) -->
-    <script type="module">
-      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-      import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
-
-      // 🔴 여기에 본인 Firebase 설정 넣어야 함
-      const firebaseConfig = {
-        apiKey: "YOUR_API_KEY",
-        authDomain: "YOUR_PROJECT.firebaseapp.com",
-        projectId: "YOUR_PROJECT_ID",
-        storageBucket: "YOUR_PROJECT.appspot.com",
-        messagingSenderId: "XXXXXXX",
-        appId: "XXXXXXX",
-        measurementId: "G-XXXXXXX"
-      };
-
-      const app = initializeApp(firebaseConfig);
-      const analytics = getAnalytics(app);
-
-      window.firebaseLoaded = true;
-    </script>
-
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>로또 번호 추천기</title>
     <style>
-      body {
-        background: #ECEFF1;
-        font-family: Arial;
-        text-align: center;
-        padding-top: 100px;
-      }
-      #box {
-        background: white;
-        padding: 30px;
-        width: 350px;
-        margin: auto;
-        border-radius: 8px;
-      }
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 100px;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            color: #333;
+        }
+        #numbers {
+            font-size: 20px;
+            margin: 20px 0;
+            font-weight: bold;
+            color: #2c3e50;
+            line-height: 1.8;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        .bonus {
+            color: #e74c3c;
+        }
     </style>
-  </head>
+</head>
+<body>
 
-  <body>
-    <div id="box">
-      <h2>Firebase 연결 테스트</h2>
-      <p id="status">로딩 중...</p>
-    </div>
+    <h1>🎯 로또 번호 + 보너스 추천기</h1>
+    <div id="numbers">버튼을 눌러주세요</div>
+    <button onclick="generateLotto()">번호 5게임 추천받기</button>
 
     <script>
-      setTimeout(() => {
-        const status = document.getElementById("status");
-        if (window.firebaseLoaded) {
-          status.innerText = "✅ Firebase 정상 연결 완료";
-        } else {
-          status.innerText = "❌ Firebase 로딩 실패";
+        function generateOneGame() {
+            let numbers = [];
+
+            // 6개 번호 생성
+            while (numbers.length < 6) {
+                let num = Math.floor(Math.random() * 45) + 1;
+                if (!numbers.includes(num)) {
+                    numbers.push(num);
+                }
+            }
+
+            numbers.sort((a, b) => a - b);
+
+            // 보너스 번호 생성 (기존 번호와 중복 안됨)
+            let bonus;
+            do {
+                bonus = Math.floor(Math.random() * 45) + 1;
+            } while (numbers.includes(bonus));
+
+            return { main: numbers, bonus: bonus };
         }
-      }, 1000);
+
+        function generateLotto() {
+            let result = "";
+
+            for (let i = 1; i <= 5; i++) {
+                let game = generateOneGame();
+                result += i + "번: " 
+                       + game.main.join(" , ") 
+                       + " + 보너스: <span class='bonus'>" 
+                       + game.bonus 
+                       + "</span><br>";
+            }
+
+            document.getElementById("numbers").innerHTML = result;
+        }
     </script>
-  </body>
+
+</body>
 </html>
