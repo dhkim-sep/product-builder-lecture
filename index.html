@@ -1,87 +1,26 @@
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>로또 번호 추천기</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin-top: 100px;
-            background-color: #f4f4f4;
-        }
-        h1 {
-            color: #333;
-        }
-        #numbers {
-            font-size: 20px;
-            margin: 20px 0;
-            font-weight: bold;
-            color: #2c3e50;
-            line-height: 1.8;
-        }
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-            background-color: #3498db;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #2980b9;
-        }
-        .bonus {
-            color: #e74c3c;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <h1>🎯 로또 번호 + 보너스 추천기</h1>
-    <div id="numbers">버튼을 눌러주세요</div>
-    <button onclick="generateLotto()">번호 5게임 추천받기</button>
+    <main class="container">
+        <header>
+            <h1>🎯 로또 번호 추천기</h1>
+            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">🌙</button>
+        </header>
+        
+        <div id="numbers-display">
+            <p style="color: var(--text-secondary);">버튼을 눌러 번호를 생성하세요</p>
+        </div>
 
-    <script>
-        function generateOneGame() {
-            let numbers = [];
+        <button id="generate-btn">번호 5게임 추천받기</button>
+    </main>
 
-            // 6개 번호 생성
-            while (numbers.length < 6) {
-                let num = Math.floor(Math.random() * 45) + 1;
-                if (!numbers.includes(num)) {
-                    numbers.push(num);
-                }
-            }
-
-            numbers.sort((a, b) => a - b);
-
-            // 보너스 번호 생성 (기존 번호와 중복 안됨)
-            let bonus;
-            do {
-                bonus = Math.floor(Math.random() * 45) + 1;
-            } while (numbers.includes(bonus));
-
-            return { main: numbers, bonus: bonus };
-        }
-
-        function generateLotto() {
-            let result = "";
-
-            for (let i = 1; i <= 5; i++) {
-                let game = generateOneGame();
-                result += i + "번: " 
-                       + game.main.join(" , ") 
-                       + " + 보너스: <span class='bonus'>" 
-                       + game.bonus 
-                       + "</span><br>";
-            }
-
-            document.getElementById("numbers").innerHTML = result;
-        }
-    </script>
-
+    <script src="main.js"></script>
 </body>
 </html>
