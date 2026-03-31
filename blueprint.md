@@ -31,9 +31,26 @@ A simple web application that generates 5 sets of Lotto numbers including a bonu
 - Use Git to track changes.
 - Push the changes to the repository for deployment.
 
+## Planned Changes: Partnership Inquiry Form
+### 1. UI/UX Design
+- Add a "Partnership Inquiry" section at the bottom of the page.
+- Use a clean, modern form layout that matches the existing Lotto Generator aesthetic.
+- Ensure the form is fully responsive and supports both Light and Dark modes.
+
+### 2. Integration (Formspree)
+- Use the Formspree endpoint: `https://formspree.io/f/mlgpypkr`.
+- Include fields for: Name, Email, and Message.
+- Use `method="POST"` to send data to Formspree.
+
+### 3. Styling
+- Apply consistent spacing, typography, and color schemes using existing CSS variables.
+- Add hover and focus states for form inputs and the submit button.
+
 ## Implementation Steps
 1. [x] Create/Update `style.css` with CSS variables and theme layers.
 2. [x] Update `index.html` with theme toggle UI and external links.
 3. [x] Update `main.js` with Lotto logic and Theme switching logic.
-4. [x] Verify functionality and responsiveness.
-5. [x] Git commit and push.
+4. [x] Add Partnership Inquiry form to `index.html`.
+5. [x] Style the inquiry form in `style.css`.
+6. [x] Verify functionality and responsiveness (AJAX submission implemented).
+7. [ ] Git commit and push.

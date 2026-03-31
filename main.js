@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const themeToggle = document.getElementById('theme-toggle');
   const generateBtn = document.getElementById('generate-btn');
   const numbersDisplay = document.getElementById('numbers-display');
+  const inquiryForm = document.getElementById('inquiry-form');
   const html = document.documentElement;
 
   // --- Theme Management ---
@@ -74,4 +75,44 @@ document.addEventListener('DOMContentLoaded', () => {
       numbersDisplay.appendChild(gameRow);
     }
   });
+
+  // --- Inquiry Form (AJAX) ---
+  if (inquiryForm) {
+    inquiryForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const status = document.createElement('p');
+      status.style.marginTop = '1rem';
+      status.style.fontWeight = 'bold';
+      
+      const submitBtn = inquiryForm.querySelector('.submit-btn');
+      const originalBtnText = submitBtn.textContent;
+      
+      try {
+        submitBtn.disabled = true;
+        submitBtn.textContent = '보내는 중...';
+        
+        const data = new FormData(e.target);
+        const response = await fetch(e.target.action, {
+          method: inquiryForm.method,
+          body: data,
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+        
+        if (response.ok) {
+          inquiryForm.innerHTML = '<div style="text-align: center; padding: 2rem;"><p style="font-size: 1.2rem; color: var(--accent-color); margin-bottom: 1rem;">✅ 문의가 성공적으로 전송되었습니다!</p><p>빠른 시일 내에 답변 드리겠습니다.</p></div>';
+        } else {
+          const errorData = await response.json();
+          throw new Error(errorData.errors ? errorData.errors.map(err => err.message).join(", ") : '전송 실패');
+        }
+      } catch (error) {
+        status.textContent = `❌ 오류: ${error.message}`;
+        status.style.color = 'var(--bonus-color)';
+        inquiryForm.appendChild(status);
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalBtnText;
+      }
+    });
+  }
 });
