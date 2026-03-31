@@ -72,6 +72,21 @@
     transition: background-color var(--transition-speed), box-shadow var(--transition-speed);
   }
 
+  .comment-section {
+    max-width: 600px;
+    width: 90%;
+    margin-bottom: 2rem;
+  }
+
+  .comment-container {
+    padding: 2.5rem;
+    background-color: var(--card-bg);
+    border-radius: 1.5rem;
+    box-shadow: var(--shadow);
+    transition: background-color var(--transition-speed), box-shadow var(--transition-speed);
+    text-align: left;
+  }
+
   header {
     display: flex;
     justify-content: space-between;

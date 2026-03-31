@@ -46,6 +46,15 @@ A simple web application that generates 5 sets of Lotto numbers including a bonu
 - Apply consistent spacing, typography, and color schemes using existing CSS variables.
 - Add hover and focus states for form inputs and the submit button.
 
+## Planned Changes: Disqus Comment Integration
+### 1. UI/UX Design
+- Add a comment section at the very bottom of the page using Disqus.
+- Ensure proper spacing and a container that matches the site's width and styling.
+
+### 2. Integration
+- Embed the Disqus Universal Code.
+- Configure the shortname to `productbuilder2-6`.
+
 ## Implementation Steps
 1. [x] Create/Update `style.css` with CSS variables and theme layers.
 2. [x] Update `index.html` with theme toggle UI and external links.
@@ -53,4 +62,7 @@ A simple web application that generates 5 sets of Lotto numbers including a bonu
 4. [x] Add Partnership Inquiry form to `index.html`.
 5. [x] Style the inquiry form in `style.css`.
 6. [x] Verify functionality and responsiveness (AJAX submission implemented).
-7. [ ] Git commit and push.
+7. [x] Git commit and push (Inquiry Form).
+8. [ ] Add Disqus comment section to `index.html`.
+9. [ ] Add styling for the Disqus section in `style.css`.
+10. [ ] Final verification and deployment.
