@@ -5,7 +5,7 @@ A web application that recommends dinner menus based on various categories (Kore
 
 ## Current Features (Transformed from Lotto Site)
 - Random dinner menu recommendation.
-- Category-based selection (optional).
+- Category-based selection (implemented via menu list).
 - Responsive design for mobile and web.
 - Dark/Light mode support.
 - Partnership inquiry form.
@@ -31,9 +31,9 @@ A web application that recommends dinner menus based on various categories (Kore
 - Push the changes to GitHub for deployment (GitHub Pages).
 
 ## Implementation Steps
-1. [ ] Update `blueprint.md` with the new plan.
-2. [ ] Modify `style.css` for the food-themed color palette.
-3. [ ] Update `index.html` structure and content.
-4. [ ] Rewrite `main.js` with menu recommendation logic.
-5. [ ] Verify functionality and responsiveness.
-6. [ ] Git commit and push to GitHub.
+1. [x] Update `blueprint.md` with the new plan.
+2. [x] Modify `style.css` for the food-themed color palette.
+3. [x] Update `index.html` structure and content.
+4. [x] Rewrite `main.js` with menu recommendation logic.
+5. [x] Verify functionality and responsiveness.
+6. [x] Git commit and push to GitHub.
