@@ -1,58 +1,58 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>오늘 뭐 먹지? | 저녁 메뉴 추천</title>
+    <title>What's for Dinner? | Menu Recommendation</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <nav class="lang-switcher">
-        <a href="index.html" class="lang-link active">KO</a>
-        <a href="en.html" class="lang-link">EN</a>
+        <a href="index.html" class="lang-link">KO</a>
+        <a href="en.html" class="lang-link active">EN</a>
     </nav>
 
     <main class="container">
         <header>
-            <h1>🍲 오늘 뭐 먹지?</h1>
+            <h1>🍲 What's for Dinner?</h1>
             <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">🌙</button>
         </header>
         
         <div id="display-area">
-            <p style="color: var(--text-secondary); font-size: 1.1rem;">결정 장애 해결사! <br>버튼을 눌러 저녁 메뉴를 추천받으세요.</p>
+            <p style="color: var(--text-secondary); font-size: 1.1rem;">Solving your decision fatigue! <br>Click the button to get a dinner recommendation.</p>
         </div>
 
         <button id="recommend-btn">
-            <span>✨ 저녁 메뉴 추천받기</span>
+            <span>✨ Get Recommendation</span>
         </button>
     </main>
 
     <section class="inquiry-section">
         <div class="inquiry-container">
-            <h2>🤝 맛집 제휴 문의</h2>
-            <p>메뉴 추가 요청이나 비즈니스 문의는 아래 폼을 통해 남겨주세요.</p>
+            <h2>🤝 Partnership Inquiry</h2>
+            <p>For menu requests or business inquiries, please leave a message below.</p>
             <form action="https://formspree.io/f/mlgpypkr" method="POST" id="inquiry-form">
                 <div class="form-group">
-                    <label for="name">성함</label>
-                    <input type="text" id="name" name="name" placeholder="이름을 입력하세요" required>
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your name" required>
                 </div>
                 <div class="form-group">
-                    <label for="email">이메일</label>
+                    <label for="email">Email</label>
                     <input type="email" id="email" name="email" placeholder="example@domain.com" required>
                 </div>
                 <div class="form-group">
-                    <label for="message">문의 내용</label>
-                    <textarea id="message" name="message" rows="4" placeholder="문의하실 내용을 상세히 적어주세요" required></textarea>
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="4" placeholder="Detail your inquiry here" required></textarea>
                 </div>
-                <button type="submit" class="submit-btn">문의 보내기</button>
+                <button type="submit" class="submit-btn">Send Message</button>
             </form>
         </div>
     </section>
 
     <section class="comment-section">
         <div class="comment-container">
-            <h2>💬 메뉴 추천 한마디</h2>
+            <h2>💬 Feedback</h2>
             <div id="disqus_thread"></div>
             <script>
                 (function() {
