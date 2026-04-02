@@ -3,28 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>로또 번호 추천기</title>
+    <title>오늘 뭐 먹지? | 저녁 메뉴 추천</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <main class="container">
         <header>
-            <h1>🎯 로또 번호 추천기</h1>
+            <h1>🍲 오늘 뭐 먹지?</h1>
             <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">🌙</button>
         </header>
         
-        <div id="numbers-display">
-            <p style="color: var(--text-secondary);">버튼을 눌러 번호를 생성하세요</p>
+        <div id="display-area">
+            <p style="color: var(--text-secondary); font-size: 1.1rem;">결정 장애 해결사! <br>버튼을 눌러 저녁 메뉴를 추천받으세요.</p>
         </div>
 
-        <button id="generate-btn">번호 5게임 추천받기</button>
+        <button id="recommend-btn">
+            <span>✨ 저녁 메뉴 추천받기</span>
+        </button>
     </main>
 
     <section class="inquiry-section">
         <div class="inquiry-container">
-            <h2>🤝 제휴 문의</h2>
-            <p>서비스 제휴 및 비즈니스 문의는 아래 폼을 통해 남겨주세요.</p>
+            <h2>🤝 맛집 제휴 문의</h2>
+            <p>메뉴 추가 요청이나 비즈니스 문의는 아래 폼을 통해 남겨주세요.</p>
             <form action="https://formspree.io/f/mlgpypkr" method="POST" id="inquiry-form">
                 <div class="form-group">
                     <label for="name">성함</label>
@@ -45,19 +47,10 @@
 
     <section class="comment-section">
         <div class="comment-container">
-            <h2>💬 댓글</h2>
+            <h2>💬 메뉴 추천 한마디</h2>
             <div id="disqus_thread"></div>
             <script>
-                /**
-                *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-                *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
-                /*
-                var disqus_config = function () {
-                this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-                this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-                };
-                */
-                (function() { // DON'T EDIT BELOW THIS LINE
+                (function() {
                 var d = document, s = d.createElement('script');
                 s.src = 'https://productbuilder2-6.disqus.com/embed.js';
                 s.setAttribute('data-timestamp', +new Date());

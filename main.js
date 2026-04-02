@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   const themeToggle = document.getElementById('theme-toggle');
-  const generateBtn = document.getElementById('generate-btn');
-  const numbersDisplay = document.getElementById('numbers-display');
+  const recommendBtn = document.getElementById('recommend-btn');
+  const displayArea = document.getElementById('display-area');
   const inquiryForm = document.getElementById('inquiry-form');
   const html = document.documentElement;
 
@@ -25,55 +25,55 @@ document.addEventListener('DOMContentLoaded', () => {
     themeToggle.textContent = theme === 'light' ? '🌙' : '☀️';
   }
 
-  // --- Lotto Logic ---
-  function generateOneGame() {
-    const numbers = new Set();
-    while (numbers.size < 6) {
-      numbers.add(Math.floor(Math.random() * 45) + 1);
-    }
-    const sortedNumbers = Array.from(numbers).sort((a, b) => a - b);
+  // --- Menu Database ---
+  const menus = [
+    { name: '김치찌개', category: '한식', emoji: '🥘' },
+    { name: '된장찌개', category: '한식', emoji: '🍲' },
+    { name: '비빔밥', category: '한식', emoji: '🥗' },
+    { name: '불고기', category: '한식', emoji: '🥩' },
+    { name: '삼겹살', category: '한식', emoji: '🥓' },
+    { name: '떡볶이', category: '한식', emoji: '🍢' },
+    { name: '짜장면', category: '중식', emoji: '🍜' },
+    { name: '짬뽕', category: '중식', emoji: '🔥' },
+    { name: '탕수육', category: '중식', emoji: '🍖' },
+    { name: '마라탕', category: '중식', emoji: '🌶️' },
+    { name: '초밥', category: '일식', emoji: '🍣' },
+    { name: '돈카츠', category: '일식', emoji: '🍱' },
+    { name: '라멘', category: '일식', emoji: '🍜' },
+    { name: '우동', category: '일식', emoji: '🍥' },
+    { name: '피자', category: '양식', emoji: '🍕' },
+    { name: '파스타', category: '양식', emoji: '🍝' },
+    { name: '스테이크', category: '양식', emoji: '🥩' },
+    { name: '햄버거', category: '양식', emoji: '🍔' },
+    { name: '치킨', category: '치킨', emoji: '🍗' },
+    { name: '쌀국수', category: '아시안', emoji: '🍜' },
+    { name: '팟타이', category: '아시안', emoji: '🍤' },
+    { name: '타코', category: '남미', emoji: '🌮' },
+    { name: '샌드위치', category: '간편식', emoji: '🥪' }
+  ];
 
-    let bonus;
-    do {
-      bonus = Math.floor(Math.random() * 45) + 1;
-    } while (numbers.has(bonus));
-
-    return { main: sortedNumbers, bonus: bonus };
+  // --- Recommendation Logic ---
+  function getRandomMenu() {
+    const randomIndex = Math.floor(Math.random() * menus.length);
+    return menus[randomIndex];
   }
 
-  generateBtn.addEventListener('click', () => {
-    numbersDisplay.innerHTML = '';
+  recommendBtn.addEventListener('click', () => {
+    const menu = getRandomMenu();
     
-    for (let i = 0; i < 5; i++) {
-      const game = generateOneGame();
-      const gameRow = document.createElement('div');
-      gameRow.className = 'game-row';
-      gameRow.style.animationDelay = `${i * 0.1}s`;
-
-      const gameIndex = document.createElement('span');
-      gameIndex.textContent = `${i + 1}번: `;
-      gameIndex.style.marginRight = '10px';
-      gameRow.appendChild(gameIndex);
-
-      game.main.forEach(num => {
-        const numSpan = document.createElement('span');
-        numSpan.className = 'number';
-        numSpan.textContent = num;
-        gameRow.appendChild(numSpan);
-      });
-
-      const plusSign = document.createElement('span');
-      plusSign.textContent = '+';
-      plusSign.style.margin = '0 5px';
-      gameRow.appendChild(plusSign);
-
-      const bonusSpan = document.createElement('span');
-      bonusSpan.className = 'number bonus-number';
-      bonusSpan.textContent = game.bonus;
-      gameRow.appendChild(bonusSpan);
-
-      numbersDisplay.appendChild(gameRow);
-    }
+    displayArea.innerHTML = `
+      <div class="menu-result">
+        <span class="menu-emoji">${menu.emoji}</span>
+        <h3 class="menu-name">${menu.name}</h3>
+        <span class="menu-category">${menu.category}</span>
+      </div>
+    `;
+    
+    // Add a little haptic-like effect or animation trigger if needed
+    recommendBtn.style.transform = 'scale(0.95)';
+    setTimeout(() => {
+      recommendBtn.style.transform = '';
+    }, 100);
   });
 
   // --- Inquiry Form (AJAX) ---
