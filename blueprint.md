@@ -10,6 +10,7 @@ A web application that recommends dinner menus based on various categories (Kore
 - Dark/Light mode support.
 - Partnership inquiry form.
 - Disqus comment integration.
+- Custom SVG favicon (steaming bowl icon).
 
 ## Planned Changes: Transformation from Lotto to Dinner Menu
 ### 1. UI/UX Design Updates
@@ -37,3 +38,6 @@ A web application that recommends dinner menus based on various categories (Kore
 4. [x] Rewrite `main.js` with menu recommendation logic.
 5. [x] Verify functionality and responsiveness.
 6. [x] Git commit and push to GitHub.
+7. [ ] Create `en.html` for global users.
+8. [ ] Update `main.js` to support multi-language menu data.
+9. [ ] Add language switcher UI to both pages.
