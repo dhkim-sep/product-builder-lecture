@@ -105,6 +105,74 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 100);
   });
 
+  // --- Sharing Logic ---
+  const shareKakaoBtn = document.getElementById('share-kakao');
+  const shareTwitterBtn = document.getElementById('share-twitter');
+  const copyLinkBtn = document.getElementById('copy-link');
+
+  const shareTitle = currentLang === 'ko' ? '🍲 오늘 뭐 먹지? 저녁 메뉴 추천!' : '🍲 What\'s for Dinner? Recommendation!';
+  const shareDescription = currentLang === 'ko' ? '결정 장애 해결사! 오늘의 저녁 메뉴를 추천받아보세요.' : 'Solving your decision fatigue! Get your dinner recommendation.';
+  const shareUrl = window.location.href;
+
+  // Initialize Kakao
+  if (shareKakaoBtn && typeof Kakao !== 'undefined') {
+    try {
+      if (!Kakao.isInitialized()) {
+        // You should ideally replace this with your own Kakao JavaScript Key
+        Kakao.init('862328e1f2bfe45be2e2d06cbb828f5b'); 
+      }
+      
+      shareKakaoBtn.addEventListener('click', () => {
+        Kakao.Share.sendDefault({
+          objectType: 'feed',
+          content: {
+            title: shareTitle,
+            description: shareDescription,
+            imageUrl: 'https://productbuilder-week1-972-834bd.web.app/favicon.svg', // Use absolute URL
+            link: {
+              mobileWebUrl: shareUrl,
+              webUrl: shareUrl,
+            },
+          },
+          buttons: [
+            {
+              title: currentLang === 'ko' ? '추천받으러 가기' : 'Get Recommendation',
+              link: {
+                mobileWebUrl: shareUrl,
+                webUrl: shareUrl,
+              },
+            },
+          ],
+        });
+      });
+    } catch (e) {
+      console.error('Kakao Share Error:', e);
+      shareKakaoBtn.style.display = 'none';
+    }
+  }
+
+  if (shareTwitterBtn) {
+    shareTwitterBtn.addEventListener('click', () => {
+      const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareTitle + '\n' + shareDescription)}&url=${encodeURIComponent(shareUrl)}`;
+      window.open(twitterUrl, '_blank');
+    });
+  }
+
+  if (copyLinkBtn) {
+    copyLinkBtn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(shareUrl);
+        const originalText = copyLinkBtn.querySelector('span:last-child').textContent;
+        copyLinkBtn.querySelector('span:last-child').textContent = currentLang === 'ko' ? '복사 완료!' : 'Copied!';
+        setTimeout(() => {
+          copyLinkBtn.querySelector('span:last-child').textContent = originalText;
+        }, 2000);
+      } catch (err) {
+        alert(currentLang === 'ko' ? '링크 복사에 실패했습니다.' : 'Failed to copy link.');
+      }
+    });
+  }
+
   // --- Inquiry Form (AJAX) ---
   if (inquiryForm) {
     inquiryForm.addEventListener('submit', async (e) => {

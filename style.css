@@ -77,6 +77,78 @@
     margin-bottom: 2rem;
   }
 
+  .share-section {
+    max-width: 600px;
+    width: 90%;
+    margin-bottom: 2rem;
+  }
+
+  .share-container {
+    padding: 2rem;
+    background-color: var(--card-bg);
+    border-radius: 1.5rem;
+    box-shadow: var(--shadow);
+    transition: background-color var(--transition-speed), box-shadow var(--transition-speed);
+    text-align: center;
+  }
+
+  .share-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .share-btn {
+    flex: 1;
+    min-width: 120px;
+    padding: 0.8rem 1rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border-radius: 0.8rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    box-shadow: none;
+    transition: all 0.2s ease;
+  }
+
+  .share-btn .share-icon {
+    font-size: 1.5rem;
+  }
+
+  .share-btn.kakao {
+    background-color: #FEE500;
+    color: #3C1E1E;
+  }
+
+  .share-btn.kakao:hover {
+    background-color: #fada00;
+    transform: translateY(-3px);
+  }
+
+  .share-btn.twitter {
+    background-color: #000000;
+    color: #ffffff;
+  }
+
+  .share-btn.twitter:hover {
+    background-color: #333333;
+    transform: translateY(-3px);
+  }
+
+  .share-btn.link {
+    background-color: var(--text-secondary);
+    color: #ffffff;
+  }
+
+  .share-btn.link:hover {
+    background-color: var(--text-primary);
+    transform: translateY(-3px);
+  }
+
   .inquiry-container {
     padding: 2.5rem;
     background-color: var(--card-bg);
